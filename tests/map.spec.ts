@@ -1,4 +1,4 @@
-import { LazySequence } from "../src/lib";
+import { LazySequence } from "../src";
 
 describe("test map", () => {
   test("from array", () => {

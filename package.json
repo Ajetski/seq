@@ -1,6 +1,13 @@
 {
   "name": "@ajetski/seq",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "author": {
+    "name": "Ajetski",
+    "url": "https://github.com/Ajetski"
+  },
+  "repository": {
+    "url": "https://github.com/Ajetski/seq"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [

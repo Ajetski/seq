@@ -1,8 +1,8 @@
-import { LazySequence } from "../src";
+import { Sequence } from "../src";
 
 describe("test map", () => {
   test("from array", () => {
-    let seq = new LazySequence([1, 2, 3]);
+    let seq = new Sequence([1, 2, 3]);
     let num = 1;
     seq.map(elem => elem * 2).forEach(val => {
 			expect(val).toBe(num * 2);
@@ -11,7 +11,7 @@ describe("test map", () => {
   });
 
   test("from set", () => {
-    let seq = new LazySequence(new Set([1, 2, 3]));
+    let seq = new Sequence(new Set([1, 2, 3]));
     let num = 1;
     seq.map(elem => elem * 2).forEach(val => {
 			expect(val).toBe(num * 2);
@@ -25,7 +25,7 @@ describe("test map", () => {
       [2, "b"],
       [3, "c"],
     ]);
-    let seq = new LazySequence(map);
+    let seq = new Sequence(map);
     let num = 1;
     let letter = "a";
     seq.map(([n, l]) => [n * 2, l]).forEach(val => {

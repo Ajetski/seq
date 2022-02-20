@@ -1,14 +1,14 @@
-import { LazySequence } from "../src";
+import { Sequence } from "../src";
 
-describe("test LazySequence constructor", () => {
+describe("test Sequence constructor", () => {
   test("from array", () => {
-    let seq = new LazySequence([1, 2, 3]);
+    let seq = new Sequence([1, 2, 3]);
     let num = 1;
     seq.forEach((val) => expect(val).toBe(num++));
   });
 
   test("from set", () => {
-    let seq = new LazySequence(new Set([1, 2, 3]));
+    let seq = new Sequence(new Set([1, 2, 3]));
     let num = 1;
     seq.forEach((val) => expect(val).toBe(num++));
   });
@@ -19,7 +19,7 @@ describe("test LazySequence constructor", () => {
       [2, "b"],
       [3, "c"],
     ]);
-    let seq = new LazySequence(map);
+    let seq = new Sequence(map);
     let num = 1;
     let letter = "a";
     seq.forEach((val) => {
@@ -33,6 +33,6 @@ describe("test LazySequence constructor", () => {
 
 test("test Sequence.toArray", () => {
   let arr = [1, 2, 3];
-  let seq = new LazySequence(arr);
+  let seq = new Sequence(arr);
   expect(seq.toArray()).toStrictEqual(arr);
 });

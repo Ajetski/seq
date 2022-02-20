@@ -1,15 +1,15 @@
-import { LazySequence } from "../src";
+import { Sequence } from "../src";
 
 describe("test filter", () => {
   test("from array", () => {
-    let seq = new LazySequence([1, 2, 3]);
+    let seq = new Sequence([1, 2, 3]);
     seq
 			.filter(val => val % 2 == 1)
 			.forEach(val => expect(val).not.toBe(2));
   });
 
   test("from set", () => {
-    let seq = new LazySequence(new Set([1, 2, 3]));
+    let seq = new Sequence(new Set([1, 2, 3]));
     seq
 			.filter(n => n % 2 == 1)
 			.forEach(val => expect(val).not.toBe(2));
@@ -21,7 +21,7 @@ describe("test filter", () => {
       [2, "b"],
       [3, "c"],
     ]);
-    let seq = new LazySequence(map);
+    let seq = new Sequence(map);
     seq
 			.filter(([n, _]) => n % 2 == 1)
 			.forEach(([val, _]) => {

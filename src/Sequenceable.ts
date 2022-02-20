@@ -1,6 +1,18 @@
 export abstract class Sequenceable<T> {
   abstract forEach(cb: (elem: T, idx: number) => unknown): void;
 
+	concat(
+		nextSequence: Sequenceable<T>
+	): Concat<T> {
+		return new Concat(this, nextSequence);
+	}
+
+  append(
+    nextT: T
+  ) {
+    return new Append(this, nextT);
+  }
+
   map<T2>(
 		mappingFunc: (elem: T, idx: number) => T2
 	): Map<T, T2> {
@@ -32,6 +44,36 @@ export abstract class Sequenceable<T> {
 	}
 }
 
+export class Append<T> extends Sequenceable<T> {
+  constructor(
+    private baseSequence: Sequenceable<T>,
+    private nextT: T
+  ) {
+    super();
+  }
+
+  forEach(cb: (elem: T, idx: number) => unknown): void {
+    let idx = 0;
+    this.baseSequence.forEach((elem) => cb(elem, idx++));
+    cb(this.nextT, idx++);
+  }
+}
+
+export class Concat<T> extends Sequenceable<T> {
+  constructor(
+    private baseSequence: Sequenceable<T>,
+    private nextSequence: Sequenceable<T>
+  ) {
+    super();
+  }
+
+  forEach(cb: (elem: T, idx: number) => unknown): void {
+    let idx = 0;
+    this.baseSequence.forEach((elem) => cb(elem, idx++));
+    this.nextSequence.forEach((elem) => cb(elem, idx++));
+  }
+}
+
 export class Map<T, T2> extends Sequenceable<T2> {
   constructor(
     private mappingFunc: (elem: T, idx: number) => T2,
@@ -41,8 +83,9 @@ export class Map<T, T2> extends Sequenceable<T2> {
   }
 
   forEach(cb: (elem: T2, idx: number) => unknown): void {
-    this.baseSequence.forEach((elem, idx) =>
-      cb(this.mappingFunc(elem, idx), idx)
+    let idx = 0;
+    this.baseSequence.forEach((elem) =>
+      cb(this.mappingFunc(elem, idx), idx++)
     );
   }
 }
@@ -56,9 +99,10 @@ export class Filter<T> extends Sequenceable<T> {
   }
 
   forEach(cb: (elem: T, idx: number) => unknown): void {
-    this.baseSequence.forEach((elem, idx) => {
+    let idx = 0;
+    this.baseSequence.forEach((elem) => {
       if (this.filteringFunc(elem, idx)) {
-        cb(elem, idx);
+        cb(elem, idx++);
       }
     });
   }

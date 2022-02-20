@@ -9,7 +9,6 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node .",
     "test": "jest",
     "prepublish": "yarn build"
   },

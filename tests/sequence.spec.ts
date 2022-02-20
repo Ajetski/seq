@@ -1,6 +1,13 @@
 import { Sequence } from "../src";
 
 describe("test Sequence constructor", () => {
+  test("empty sequence", () => {
+    let seq = new Sequence();
+    let count = 0;
+    seq.forEach(() => count++);
+    expect(count).toBe(0);
+  });
+
   test("from array", () => {
     let seq = new Sequence([1, 2, 3]);
     let num = 1;

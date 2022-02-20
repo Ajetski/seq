@@ -12,6 +12,11 @@ import { Sequence, Range, Filter, Map, Sequenceable /*, ...*/ } from '@ajetski/s
 
 ## Creating Sequenceables
 
+### Creating an empty Sequence
+```ts
+let seq = new Sequence();
+```
+
 ### Creating a Sequence from an Iterable
 ```ts
 let seq = new Sequence([1, 2, 3]);
@@ -42,4 +47,17 @@ let seq = new Sequence([1, 2, 3])
 ```ts
 let seq = new Sequence([1, 2, 3])
   .map((elem, idx) => elem * 2); // Sequence(2, 4, 6)
+```
+
+### Concat two Sequences
+```ts
+let seqA = new Sequence([1, 2, 3]);
+let seqB = new Sequence([4, 5, 6]);
+let seqC = seqA.concat(seqB); // Sequence(1, 2, 3, 4, 5, 6)
+```
+
+### Append to a Sequence
+```ts
+let seqA = new Sequence([1, 2, 3]);
+let seqB = seqA.append(4); // Sequence(1, 2, 3, 4)
 ```

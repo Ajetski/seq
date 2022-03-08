@@ -26,6 +26,24 @@ import {
 } from '@ajetski/seq';
 ```
 
+## Accessing elements of a Sequence
+
+### Iteration/ForEach
+
+```ts
+let seq = new Range(1, 4); // Sequence(1, 2, 3)
+seq.forEach((value, index) => {
+	///...
+});
+```
+
+### Convert to Array
+
+```ts
+let seq = new Range(1, 4); // Sequence(1, 2, 3)
+let arr = seq.toArray();
+```
+
 ## Creating Sequenceables
 
 ### Creating an empty Sequence

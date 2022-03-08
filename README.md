@@ -26,24 +26,6 @@ import {
 } from '@ajetski/seq';
 ```
 
-## Accessing elements of a Sequence
-
-### Iteration/ForEach
-
-```ts
-let seq = new Range(1, 4); // Sequence(1, 2, 3)
-seq.forEach((value, index) => {
-	///...
-});
-```
-
-### Convert to Array
-
-```ts
-let seq = new Range(1, 4); // Sequence(1, 2, 3)
-let arr = seq.toArray();
-```
-
 ## Creating Sequenceables
 
 ### Creating an empty Sequence
@@ -67,6 +49,22 @@ let seq3 = new Range(10, 1, -2); // Sequence(10, 8, 6, 4, 2)
 ```
 
 ## Operations on Sequenceables
+
+### Iterating through a Sequence
+
+```ts
+let seq = new Range(1, 4); // Sequence(1, 2, 3)
+seq.forEach((value, index) => {
+	///...
+});
+```
+
+### Convert to Array
+
+```ts
+let seq = new Range(1, 4); // Sequence(1, 2, 3)
+let arr = seq.toArray();
+```
 
 ### Filtering a Sequence
 
@@ -100,3 +98,7 @@ let seqC = seqA.concat(seqB); // Sequence(1, 2, 3, 4, 5, 6)
 let seqA = new Sequence([1, 2, 3]);
 let seqB = seqA.append(4); // Sequence(1, 2, 3, 4)
 ```
+
+## Tests
+
+Check out the [tests folder](https://github.com/Ajetski/seq/tree/main/tests) to see more examples and usages

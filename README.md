@@ -1,6 +1,6 @@
 # seq
 
-A sequence/stream library for easily parsing and analyzing data
+A lazy sequence/stream library for easily parsing and analyzing data using composable functional operators
 
 [![node ci](https://github.com/Ajetski/seq/actions/workflows/node-ci.yml/badge.svg)](https://github.com/Ajetski/seq/actions/workflows/node-ci.yml)
 
